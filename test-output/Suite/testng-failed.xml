@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Suite]" parallel="methods">
+  <test thread-count="5" name="Test(failed)" parallel="methods">
+    <classes>
+      <class name="com.makemytrip.TestCases.MakeTripHomePageTest">
+        <methods>
+          <include name="Login_Signup_Best_Practices_Text"/>
+          <include name="MakeMyTripForBusiness"/>
+          <include name="launch_home_page"/>
+          <include name="SuitcaseIcon"/>
+          <include name="IntroductionMyBizText"/>
+          <include name="teardown"/>
+          <include name="Login_with_phone_email"/>
+          <include name="MyIconOnLoginButton"/>
+          <include name="Login_Signup_Easily_With_Text"/>
+          <include name="CountryLanguageCurrency"/>
+          <include name="Google_Option_Text"/>
+          <include name="setup"/>
+          <include name="CheckMakeMyTripLogoIsVisible"/>
+          <include name="MyTripText"/>
+          <include name="Manage_Your_Booking"/>
+          <include name="CheckingPageTitle"/>
+          <include name="CheckMyBizLogo"/>
+        </methods>
+      </class> <!-- com.makemytrip.TestCases.MakeTripHomePageTest -->
+    </classes>
+  </test> <!-- Test(failed) -->
+</suite> <!-- Failed suite [Suite] -->
