@@ -1,13 +1,14 @@
 version: "3.9"
 services:
   hub:
-    image: selenium/hub
+    image: selenium/hub:3.141.59
     ports:
       - "4444:4444"
     environment:
       GRID_MAX_SESSION: 16
       GRID_BROWSER_TIMOUT: 3000
       GRID_TIMEOUT: 3000
+      
   chrome:
     image: selenium/node-chrome-debug
     container_name: web-chrome

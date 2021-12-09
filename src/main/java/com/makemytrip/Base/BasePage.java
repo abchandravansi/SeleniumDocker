@@ -2,19 +2,21 @@ package com.makemytrip.Base;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Properties;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class BasePage {
 
-	public static ThreadLocal<WebDriver> tldriver = new ThreadLocal<WebDriver>();
+	public static ThreadLocal<RemoteWebDriver> tldriver = new ThreadLocal<RemoteWebDriver>();
 	public static Properties prop;
 	public static String path = System.getProperty("user.dir");
 
@@ -29,16 +31,21 @@ public class BasePage {
 
 	}
 
-	public static void setDriver(String BrowserName) {
+	public static void setDriver(String BrowserName) throws MalformedURLException {
 		if (BrowserName.equals("chrome")) {
-			WebDriverManager.chromedriver().setup();
-			tldriver.set(new ChromeDriver());
+			ChromeOptions options = new ChromeOptions();
+			options.addArguments("--no-sandbox");
+			options.addArguments("--headless");
+			options.addArguments("--disable-gpu");
+			options.addArguments("--disable-dev-shm-usage");
+			
+			tldriver.set(new RemoteWebDriver(new URL(prop.getProperty("remote_url")),options));
 		} else if (BrowserName.equals("firefox")) {
-			WebDriverManager.firefoxdriver().setup();
-			tldriver.set(new FirefoxDriver());
+			FirefoxOptions options = new FirefoxOptions();
+			tldriver.set(new RemoteWebDriver(new URL(prop.getProperty("remote_url")),options));
 		} else {
-			WebDriverManager.chromedriver().setup();
-			tldriver.set(new ChromeDriver());
+			ChromeOptions options = new ChromeOptions();
+			tldriver.set(new RemoteWebDriver(new URL(prop.getProperty("remote_url")),options));
 		}
 	}
 

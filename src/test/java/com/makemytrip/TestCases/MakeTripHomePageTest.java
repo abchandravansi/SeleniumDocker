@@ -1,5 +1,7 @@
 package com.makemytrip.TestCases;
 
+import java.net.MalformedURLException;
+
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -19,8 +21,8 @@ public class MakeTripHomePageTest extends BasePage {
 
 
 	@BeforeTest
-	public void setup() {
-		BasePage.setDriver("chrome");
+	public void setup() throws MalformedURLException {
+		BasePage.setDriver("firefox");
 	}
 	
 	@Test
